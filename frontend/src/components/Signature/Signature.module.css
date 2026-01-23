@@ -1,0 +1,169 @@
+/* ===============================
+   ESTRUTURA
+================================ */
+
+.signatureMain {
+  display: flex;
+  min-height: 80px;
+  flex-flow: wrap;
+  justify-content: start;
+  transform: scale(2.5);
+}
+
+/* SVG */
+.signatureMain :global(svg path) {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-width: 1;
+  stroke: #fff;
+  transition: 0.2s stroke-dashoffset;
+}
+
+/* ===============================
+   CLASSES GLOBAIS
+================================ */
+
+:global(.up),
+:global(.lo) {
+  max-height: 51px;
+}
+
+/* ===============================
+   LETTER BOXES
+================================ */
+
+/* UP */
+:global(.up.e) {
+  margin: 0 -10px 0 -8px;
+}
+:global(.up.v) {
+  margin: 0 -15px 0 -6px;
+}
+
+/* LO */
+:global(.lo.a) {
+  margin: 0 -4px 0 0;
+}
+:global(.lo.e) {
+  margin: 0 -4px 0 0;
+}
+:global(.lo.i) {
+  margin: 0 -3.5px 0 0;
+}
+:global(.lo.l) {
+  margin: 0 -12px 0 -4px;
+}
+:global(.lo.r) {
+  margin: 0 -3px 0 -1px;
+}
+:global(.lo.s) {
+  margin: 0 -4px 0 -4px;
+}
+:global(.lo.v) {
+  margin: 0 -4.5px 0 0;
+}
+:global(.lo.y) {
+  margin: 0 -4px 0 -9px;
+}
+
+/* ===============================
+   STROKE PATHS
+================================ */
+
+/* UP */
+:global(.up.e path) {
+  stroke-dasharray: 132;
+  stroke-dashoffset: 132;
+}
+
+:global(.up.v path) {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+/* LO */
+:global(.lo.a path) {
+  stroke-dasharray: 36;
+  stroke-dashoffset: 36;
+}
+
+:global(.lo.e path) {
+  stroke-dasharray: 22;
+  stroke-dashoffset: 22;
+}
+
+:global(.lo.i path) {
+  stroke-dasharray: 16;
+  stroke-dashoffset: 16;
+}
+
+:global(.lo.l path) {
+  stroke-dasharray: 33;
+  stroke-dashoffset: 33;
+}
+
+:global(.lo.r path) {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+}
+
+:global(.lo.s path) {
+  stroke-dasharray: 32;
+  stroke-dashoffset: 32;
+}
+
+:global(.lo.v path) {
+  stroke-dasharray: 17;
+  stroke-dashoffset: 17;
+}
+
+:global(.lo.y path) {
+  stroke-dasharray: 70;
+  stroke-dashoffset: 70;
+}
+@media (max-width: 768px) {
+  .signatureMain {
+    transform: scale(1.8);
+    min-height: 60px;
+    justify-content: center;
+  }
+
+  :global(.up),
+  :global(.lo) {
+    max-height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  :global(.up.e),
+  :global(.up.v),
+  :global(.lo.l),
+  :global(.lo.y) {
+    margin-left: -4px;
+    margin-right: -4px;
+  }
+  .signatureMain {
+    transform: scale(1.2);
+    justify-content: center;
+  }
+
+  :global(.up),
+  :global(.lo) {
+    max-height: 32px;
+  }
+}
+
+/* Até 493px – mobile compacto */
+@media (max-width: 493px) {
+  .signatureMain {
+    transform: scale(1.2);
+    min-height: 50px;
+    width: 360px;
+    justify-content: center;
+  }
+
+  :global(.up),
+  :global(.lo) {
+    max-height: 34px;
+  }
+}

@@ -1,0 +1,38 @@
+.contactPreference {
+  margin-top: 12px;
+}
+
+.contactPreference p {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  color: #4f3624;
+}
+
+.options {
+  display: flex;
+  gap: 24px;
+}
+
+.options label {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.contactPreference span {
+  font-size: 12px;
+  color: #a76f4e;
+  margin-top: 4px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .options {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

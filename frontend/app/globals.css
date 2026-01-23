@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+:root {
+  --color-brown: #4f3624;
+  --color-beige: #a37d5a;
+  --color-white: #ffffff;
+
+  --font-italiana: "Italiana", serif;
+  --font-montserrat: "Montserrat", sans-serif;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+}

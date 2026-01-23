@@ -1,0 +1,39 @@
+.wrapper {
+  padding: 140px 8vw;
+  background-color: #f7f4f1;
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.title {
+  font-family: "Italiana", serif;
+  font-size: 54px;
+  color: #4f3624;
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 15px;
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 90px 6vw;
+  }
+
+  .title {
+    font-size: 42px;
+  }
+}

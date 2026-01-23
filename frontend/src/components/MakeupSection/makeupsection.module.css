@@ -1,0 +1,30 @@
+.makeup {
+  background-color: #a37d5a;
+  display: flex;
+  justify-content: space-around;
+}
+
+.makeup__img {
+  width: auto;
+  max-width: 700px;
+}
+
+.makeup__self {
+  padding: 100px;
+  text-align: center;
+  justify-content: center;
+}
+
+@media (max-width: 1304px) {
+  .makeup {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .makeup__img {
+    max-width: 450px;
+  }
+  .makeup__self {
+    padding: 50px;
+  }
+}

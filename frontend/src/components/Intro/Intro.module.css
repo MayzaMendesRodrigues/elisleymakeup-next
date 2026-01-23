@@ -1,0 +1,124 @@
+.intro {
+  width: 100vw;
+  padding-bottom: 100px;
+  margin: 0;
+  background-image: url("/images/plano2.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro__bookingContent {
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid var(--color-white);
+  border-bottom: 1px solid var(--color-white);
+  padding: 15px 0;
+}
+
+.intro__booking {
+  display: inline-block;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-light);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-white);
+  animation: scrollText 25s linear infinite;
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+@keyframes scrollText {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.intro__content {
+  max-width: 780px;
+  text-align: center;
+  padding: 0 15px;
+}
+
+.intro__title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  font-size: 17px;
+  color: #fff;
+  margin: 0 auto;
+  padding-top: 50px;
+  max-width: 273px;
+}
+
+.intro__atencion {
+  font-family: "Italiana", sans-serif;
+  font-weight: 600;
+  font-size: 60px;
+  color: #fff;
+  margin: 0 auto;
+  padding: 50px 0;
+  max-width: 800px;
+}
+
+.intro__paragraph {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: #fff;
+  margin: 50px auto;
+  padding: 0 53px;
+  line-height: 1.6;
+}
+
+@media (max-width: 1700px) {
+  .intro {
+    min-height: 35vh;
+  }
+  .intro__booking {
+    font-size: 12px;
+  }
+  .intro__title {
+    font-size: 14px;
+  }
+  .intro__atencion {
+    padding: 30px 20px 0 20px;
+  }
+  .intro__paragraph {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .intro__atencion {
+    font-size: 40px;
+    padding: 30px 20px;
+  }
+  .intro__paragraph {
+    font-size: 14px;
+    padding: 0 20px;
+    line-height: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro {
+    min-height: 42vh;
+  }
+}
+
+@media (max-width: 544px) {
+  .intro {
+    min-height: 40vh;
+  }
+  .intro__atencion {
+    font-size: 40px;
+  }
+}

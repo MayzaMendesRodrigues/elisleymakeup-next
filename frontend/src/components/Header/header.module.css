@@ -1,0 +1,46 @@
+.header {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.backgroundImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(79, 54, 36, 0.4),
+    rgba(79, 54, 36, 0.25),
+    rgba(0, 0, 0, 0.3)
+  );
+  z-index: 1;
+}
+
+.headerContent {
+  position: absolute;
+  bottom: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: white;
+  text-align: center;
+}
+
+.headerLocation {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+}

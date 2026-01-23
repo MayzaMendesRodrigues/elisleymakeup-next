@@ -1,0 +1,81 @@
+/* grid base (exemplo) */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.vertical {
+  grid-column: span 2;
+  aspect-ratio: 3 / 4;
+}
+
+.horizontal {
+  grid-column: span 4;
+  aspect-ratio: 16 / 9;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.text {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  color: white;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+/* modal */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  margin-top: 60px;
+}
+
+.modalImage {
+  width: auto;
+  height: auto;
+  max-width: 85vw;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+.close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 5;
+}
+
+/* .close:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+} */

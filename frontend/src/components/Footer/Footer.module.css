@@ -1,0 +1,185 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #4f3624;
+  padding: 60px 20px;
+  color: #fff;
+  text-align: center;
+}
+
+/* ====== SEÇÕES PRINCIPAIS ====== */
+.footer__content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 80px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.footer__socialContent {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 60px;
+  margin-bottom: 40px;
+}
+
+.footer__social {
+  flex: 1;
+  min-width: 240px;
+}
+
+/* ====== TÍTULOS E LINKS ====== */
+.footer__socialHeading {
+  font-family: "Italiana", serif;
+  font-weight: 200;
+  font-size: 36px;
+  color: #a37d5a;
+  margin-bottom: 16px;
+}
+
+.footer__link {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  color: #fff;
+  text-decoration: none;
+  line-height: 1.8;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.footer__link:hover,
+.footer__link:focus-visible {
+  color: #a37d5a;
+  outline: none;
+}
+
+/* ====== SOCIAL ICONS ====== */
+.footer__social-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 10px;
+}
+
+.footer__social-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-brands {
+  color: #fff;
+  background-color: #a37d5a;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.fa-brands:hover,
+.fa-brands:focus-visible {
+  transform: scale(1.05);
+  background-color: #fff;
+  color: #a37d5a;
+  outline: none;
+}
+
+/* ====== LOGO ====== */
+.footer__logo-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 30px;
+}
+
+.footer__logo-text {
+  font-weight: 100;
+  font-size: 36px;
+  font-family: "Italiana";
+  margin: 0;
+  color: #fff;
+}
+
+.footer__logo-makeup {
+  margin-top: -8px;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  letter-spacing: 3px;
+  font-size: 10px;
+}
+
+/* ====== COPYRIGHT ====== */
+.footer__copy-content {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.footer__copy {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  color: #a37d5a;
+  margin: 4px 0;
+}
+
+.footer__copy-link {
+  color: #a37d5a;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer__copy-link:hover,
+.footer__copy-link:focus-visible {
+  color: #fff;
+  outline: none;
+}
+
+/* ====== RESPONSIVIDADE ====== */
+@media (max-width: 1024px) {
+  .footer__social-content {
+    gap: 40px;
+  }
+
+  .footer__social-heading {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 780px) {
+  .footer__social-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer__logo-content {
+    align-items: center;
+  }
+
+  .footer__logo-text {
+    font-size: 30px;
+  }
+
+  .footer__social-icon {
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+}
+/* ====== ANIMAÇÃO SUAVE ====== */
+@media (prefers-reduced-motion: no-preference) {
+  .footer__link,
+  .fa-brands {
+    transition: all 0.3s ease;
+  }
+}

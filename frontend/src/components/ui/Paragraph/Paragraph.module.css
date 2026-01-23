@@ -1,0 +1,15 @@
+.paragraph {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.paragraphBrown {
+  color: #4f3624;
+}
+
+.paragraphWhite {
+  color: #fff;
+}

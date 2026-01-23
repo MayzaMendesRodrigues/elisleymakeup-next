@@ -1,0 +1,16 @@
+.title {
+  font-size: 60px;
+  color: #fff;
+  font-family: "Italiana", sans-serif;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.titleBrown {
+  color: #4f3624;
+}
+
+.titleWhite {
+  color: #fff;
+}

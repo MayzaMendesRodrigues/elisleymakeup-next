@@ -1,0 +1,20 @@
+.button {
+  cursor: pointer;
+  text-transform: uppercase;
+  /* background-color: #4f3624; */
+  color: #fff;
+  width: 100%;
+  padding: 5px;
+  border-radius: 25px;
+  margin-top: 25px;
+}
+
+.buttonBrown {
+  background-color: #4f3624;
+  color: #fff;
+}
+
+.buttonWhite {
+  background-color: #a37d5a;
+  color: #fff;
+}

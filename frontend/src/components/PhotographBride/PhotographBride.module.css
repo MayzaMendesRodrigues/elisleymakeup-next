@@ -1,0 +1,67 @@
+.photographBride {
+  position: relative;
+  overflow: hidden;
+  background-color: #4f3624;
+  width: 100%;
+  height: 80vh;
+}
+
+.photo {
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.photosTrack {
+  display: flex;
+  gap: 800px;
+  width: max-content;
+  animation: scrollPhotos 80s linear infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.logoTrack {
+  display: flex;
+  gap: 850px;
+  width: max-content;
+  animation: scrollLogos 100s linear infinite;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes scrollPhotos {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollLogos {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.photo {
+  height: 80vh;
+  width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.logo {
+  width: auto;
+  opacity: 0.85;
+  flex-shrink: 0;
+}

@@ -1,0 +1,79 @@
+.service {
+  position: relative;
+  /* background-image: url("../../images/veu.png"); */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  padding: 100px;
+  box-sizing: border-box;
+}
+
+/* Overlay suave (luxo/editorial) */
+/* .service::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);
+  z-index: 0;
+} */
+
+.serviceContent {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 600px;
+}
+
+.serviceTitle {
+  font-family: "Italiana", serif;
+  font-size: 60px;
+  font-weight: 600;
+  color: #4f3624;
+  margin-bottom: 40px;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+/* IMAGEM */
+/* .serviceImg {
+  position: relative;
+  z-index: 1;
+  width: 598px;
+  min-height: 468px;
+  background-image: url("../../images/home__sposa.jpg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 6px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+} */
+
+/* RESPONSIVO */
+@media (max-width: 1024px) {
+  .service {
+    flex-direction: column;
+    padding: 50px;
+    gap: 40px;
+  }
+
+  .serviceTitle {
+    text-align: center;
+    font-size: 40px;
+  }
+
+  .serviceImg {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .servici {
+    padding: 40px 25px;
+  }
+
+  .serviceTitle {
+    font-size: 40px;
+  }
+}
