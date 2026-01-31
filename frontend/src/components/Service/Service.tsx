@@ -43,7 +43,7 @@ export default function Service() {
 
         <Accordion items={services} />
 
-        <Button text="Scopri di più" className="primary" />
+        <Button text="Scopri di più" variant="Brown" href="/servizi" />
       </div>
     </section>
   );

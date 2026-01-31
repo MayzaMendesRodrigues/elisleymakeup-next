@@ -10,7 +10,7 @@ import Paragraph from "../ui/Paragraph/Paragraph";
 export default function MakeupSection() {
   return (
     <section className={styles.makeup}>
-      <div>
+      <div className={styles.makeup__imgContainer}>
         <Image
           src={eli}
           alt="Make-up profissional"
@@ -20,35 +20,41 @@ export default function MakeupSection() {
       </div>
 
       <div className={styles.makeup__self}>
-        <Title>Make-up</Title>
-        <Paragraph>
-          Prima ancora di iniziare, ti ascolto per capire il tuo stile, la tua
+        <Title text="Make-up" />
+        <Paragraph
+          text="Prima ancora di iniziare, ti ascolto per capire il tuo stile, la tua
           personalità e ciò che desideri esprimere. Il trucco è un modo per
           rivelare la tua versione migliore, aumentare la fiducia in te stessa e
           valorizzare la tua bellezza unica. Che sia per un’occasione speciale o
           semplicemente per sentirti più bella ogni giorno, il mio obiettivo è
-          farti sentire radiosa e naturale.
-        </Paragraph>
-        <hr />
+          farti sentire radiosa e naturale."
+          variant="White"
+        />
 
-        <Title>Self-makeup e Consulenza</Title>
+        <hr className={styles.hr} />
 
-        <Paragraph>
-          Offro anche lezioni personalizzate di autotrucco, per aiutarti a
+        <Title text="Self-makeup e Consulenza" />
+
+        <Paragraph
+          text="Offro anche lezioni personalizzate di autotrucco, per aiutarti a
           truccarti con sicurezza, praticità e autenticità. Se hai dubbi sulla
           cura della pelle o non sai quali prodotti siano i più adatti a te,
           propongo una consulenza completa per guidarti con attenzione e
-          competenza.
-        </Paragraph>
-        <hr />
-        <Title> Parliamo di Beauty</Title>
-        <Paragraph>
-          Se desideri rimanere sempre aggiornata sul mondo del make-up, con
-          consigli, tendenze e ispirazioni, visita il mio blog e scopri
-          contenuti pensati per valorizzare la tua bellezza ogni giorno.
-        </Paragraph>
+          competenza."
+          variant="White"
+        />
 
-        <Button text="Scopri di più" variant="secondary" type="button" />
+        <hr className={styles.hr} />
+        <Title text="Parliamo di Beauty" />
+        <Paragraph
+          text=" Se desideri rimanere sempre aggiornata sul mondo del make-up, con
+          consigli, tendenze e ispirazioni, visita il mio blog e scopri
+          contenuti pensati per valorizzare la tua bellezza ogni giorno."
+          variant="White"
+        />
+        <hr className={styles.hr} />
+
+        <Button text="Scopri di più" variant="Brown" href="/servizi" />
       </div>
     </section>
   );

@@ -68,9 +68,23 @@
 }
 
 .cta {
-  background: #f9f7f5;
+  background: #a37d5a;
   padding: 120px 20px;
   text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form {
+  margin: 40px auto 0 auto;
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 @media (min-width: 768px) {

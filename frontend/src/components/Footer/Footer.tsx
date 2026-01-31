@@ -1,5 +1,12 @@
 import Link from "next/link";
 import styles from "./Footer.module.css";
+import SignatureAnimation from "../Signature/SignatureAnimation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebookF,
+  faInstagram,
+  faTiktok,
+} from "@fortawesome/free-brands-svg-icons";
 
 const Footer: React.FC = () => {
   return (
@@ -14,12 +21,24 @@ const Footer: React.FC = () => {
               Richiedi preventivo
             </Link>
 
-            <Link href="/service" className={styles.footer__link}>
+            <Link href="/servizi" className={styles.footer__link}>
               Servizi
+            </Link>
+
+            <Link href="/servizi" className={styles.footer__link}>
+              Make-up sposa
+            </Link>
+
+            <Link href="/servizi" className={styles.footer__link}>
+              Galleria
             </Link>
 
             <Link href="/contatti" className={styles.footer__link}>
               Contatti
+            </Link>
+
+            <Link href="/policy-privacy" className={styles.footer__link}>
+              Policy Privacy
             </Link>
           </div>
 
@@ -36,26 +55,36 @@ const Footer: React.FC = () => {
           {/* ---- COLUNA 3 ---- */}
           <div className={styles.footer__social}>
             <h4 className={styles.footer__socialHeading}>Seguimi sui social</h4>
-
             <div className={styles.footer__socialIcon}>
               <a
                 href="https://www.instagram.com/elisley_vieiramakeup/"
-                className={styles.footer__socialLink}
                 target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram Elisley Vieira"
               >
-                <i className="fa-brands fa-instagram" />
+                <FontAwesomeIcon
+                  icon={faInstagram}
+                  size="1x"
+                  className={styles.faBrands}
+                />
               </a>
-
               <a
-                href="https://www.linkedin.com/in/elisley-vieira-0294282b5/"
-                className={styles.footer__socialLink}
+                href="https://www.facebook.com/elisley.santos.7/"
                 target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn Elisley Vieira"
               >
-                <i className="fa-brands fa-linkedin" />
+                <FontAwesomeIcon
+                  icon={faFacebookF}
+                  size="1x"
+                  className={styles.faBrands}
+                />
+              </a>
+              <a
+                href="https://www.tiktok.com/@elisleyvieiramakeup"
+                target="_blank"
+              >
+                <FontAwesomeIcon
+                  icon={faTiktok}
+                  size="1x"
+                  className={styles.faBrands}
+                />
               </a>
             </div>
           </div>
@@ -64,8 +93,9 @@ const Footer: React.FC = () => {
 
       {/* ---- LOGO ---- */}
       <div className={styles.footer__logoContent} translate="no">
-        <h2 className={styles.footer__logoText}>Elisley Vieira</h2>
-        <p className={styles.footer__logoMakeup}>MAKEUP</p>
+        <SignatureAnimation delay={0.1} duration={2.0}>
+          Elisley Vieira
+        </SignatureAnimation>
       </div>
 
       {/* ---- COPYRIGHT ---- */}
@@ -76,14 +106,14 @@ const Footer: React.FC = () => {
 
         <p className={styles.footer__copy}>
           Website designed by{" "}
-          <a
+          <Link
             href="https://www.linkedin.com/in/mayza-ynara-mendes-rodrigues/"
             className={styles.footer__copyLink}
             target="_blank"
             rel="noopener noreferrer"
           >
             Mayza Ynara
-          </a>
+          </Link>
         </p>
       </div>
     </footer>

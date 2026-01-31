@@ -34,18 +34,16 @@
   text-align: center;
 }
 
-/* .bride__img {
-  width: 430px;
-  height: 430px;
-  background-image: url(../../images/header.jpg);
-  background-position: center;
-  background-size: cover;
-} */
+@media (max-width: 1529px) {
+  .bride {
+    padding: 100px 250px 250px;
+  }
+}
 
 @media (max-width: 768px) {
   .bride {
     flex-direction: column;
-    padding: 0 50px 50px;
+    padding: 0 50px 150px;
   }
 
   .brideTitle {
@@ -55,5 +53,11 @@
 
   .brideParagraph {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 540px) {
+  .bride {
+    padding-bottom: 150px;
   }
 }

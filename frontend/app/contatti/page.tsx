@@ -10,7 +10,7 @@ import Button from "@/src/components/ui/Button/Button";
 import {
   isValidEmail,
   isValidPhone,
-  isFutureDate,
+  // isFutureDate,
 } from "@/src/utils/validators";
 
 type FormState = {
@@ -39,7 +39,7 @@ export default function ContactForm() {
   const [successOpen, setSuccessOpen] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     let newValue = value;
@@ -67,12 +67,12 @@ export default function ContactForm() {
       newErrors.contactInfo = "Email non valida";
     }
 
-    // Data futura
-    if (!form.date) {
-      newErrors.date = "Inserisci la data dell’evento";
-    } else if (!isFutureDate(form.date)) {
-      newErrors.date = "La data deve essere futura";
-    }
+    // // Data futura
+    // if (!form.date) {
+    //   newErrors.date = "Inserisci la data dell’evento";
+    // } else if (!isFutureDate(form.date)) {
+    //   newErrors.date = "La data deve essere futura";
+    // }
 
     if (!form.contact) {
       newErrors.contact = "Seleziona una preferenza di contatto";
@@ -124,7 +124,7 @@ export default function ContactForm() {
             onChange={handleChange}
             error={errors.contactInfo}
           />
-          <FormField
+          {/* <FormField
             label="Data dell’Evento"
             name="date"
             type="date"
@@ -132,7 +132,7 @@ export default function ContactForm() {
             value={form.date}
             onChange={handleChange}
             error={errors.date}
-          />
+          /> */}
 
           <FormField
             label="Messaggio"
@@ -151,7 +151,7 @@ export default function ContactForm() {
             error={errors.contact}
           />
 
-          <Button text="Invia Richiesta" variant="Brown" />
+          <Button text="Invia Richiesta" variant="Brown" href="#" />
         </form>
       </section>
 

@@ -49,6 +49,11 @@
   margin-bottom: 50px;
 }
 
+.about__signature {
+  width: auto;
+  height: auto;
+}
+
 /* Responsividade */
 @media (max-width: 1024px) {
   /* .about {

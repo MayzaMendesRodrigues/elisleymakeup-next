@@ -10,7 +10,20 @@ import MakeupSection from "@/src/components/MakeupSection/makeupsection";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <Intro />
+      <Intro
+        subtitle="TRUCCO PER SPOSE, EVENTI E MOMENTI SPECIALI"
+        title=" Bellezza nella diversità"
+        description=" La mia più grande gioia è vederti riconoscere e amare ancora di più te
+          stessa guardandoti allo specchio. Attraverso il trucco, esalto la tua
+          essenza con delicatezza, cura e intenzione.
+          <br />
+          <br />
+          Specializzata make-up per spose, eventi come lauree, diciottesimi e
+          servizi fotografici, mi immergo con pennelli e colori nel tuo giorno
+          speciale per raccontare ciò che vivi. Attraverso il trucco, voglio
+          farti sentire davvero te stessa, esaltando la tua delicatezza, forza e
+          bellezza. Ti va di conoscerci?"
+      />
       <About />
       <Feedback
         title="“ Elisley è una professionista di altissimo livello.”"

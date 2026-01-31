@@ -50,6 +50,10 @@
   text-align: center;
 }
 
+.serviceButton {
+  margin-top: 50px;
+}
+
 .service__title {
   font-family: "Italiana", serif;
   font-size: 58px;
@@ -119,8 +123,11 @@
     background-color: red;
   }
 
-  .service__content {
-    max-width: 340px;
+  .serviceContent {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    text-align: center;
+    margin-top: -150px;
   }
 
   .service__title {

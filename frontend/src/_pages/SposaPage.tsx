@@ -1,5 +1,4 @@
 "use client";
-import Button from "../components/ui/Button/Button";
 import Paragraph from "../components/ui/Paragraph/Paragraph";
 import Title from "../components/ui/Title/Title";
 import styles from "./Sposa.module.css";
@@ -39,6 +38,7 @@ type FormState = {
   location: string;
   weddingPlanner: string;
   photographer: string;
+  privacy: boolean;
 };
 
 const initialState: FormState = {
@@ -52,6 +52,7 @@ const initialState: FormState = {
   location: "",
   weddingPlanner: "",
   photographer: "",
+  privacy: false,
 };
 
 export default function Sposa() {
@@ -59,10 +60,11 @@ export default function Sposa() {
   const [errors, setErrors] = useState<
     Partial<FormState & { contactInfo: string }>
   >({});
+
   const [successOpen, setSuccessOpen] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     let newValue = value;
@@ -75,19 +77,14 @@ export default function Sposa() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    // debugger;
     const newErrors: typeof errors = {};
 
     if (!form.name.trim()) {
       newErrors.name = "Inserisci nome e cognome";
     }
-
-    if (form.phone && !isValidPhone(form.phone)) {
-      newErrors.contactInfo = "Numero di telefono non valido";
-    }
-
-    if (form.email && !isValidEmail(form.email)) {
-      newErrors.contactInfo = "Email non valida";
+    if (!form.phone && !form.email) {
+      newErrors.contactInfo = "Inserisci almeno email o telefono";
     }
 
     if (form.time && !isValidTime(form.time)) {
@@ -104,6 +101,10 @@ export default function Sposa() {
       newErrors.contact = "Seleziona una preferenza di contatto";
     }
 
+    // if (!form.privacy) {
+    //   newErrors.privacy = "È necessario accettare la privacy policy";
+    // }
+
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length > 0) return;
@@ -114,15 +115,27 @@ export default function Sposa() {
       body: JSON.stringify(form),
     });
 
+    console.log("Response:", res);
+    console.log("FORM:", form);
+
     if (res.ok) {
       setSuccessOpen(true);
       setForm(initialState);
+    }
+
+    if (!res.ok) {
+      console.error("Errore nell'invio del form");
+
+      return;
     }
   };
 
   return (
     <main>
-      <Intro />
+      <Intro
+        subtitle="COMPILA IL QUESTIONARIO E RICEVI IL TUO PREVENTIVO PERSONALIZZATO"
+        title="Bellezza creata esclusivamente per te, nel giorno più speciale della tua vita"
+      />
       <section className={styles.section}>
         <Title text="Il tuo giorno, la mia attenzione" variant="Brown" />
         <Paragraph
@@ -131,85 +144,6 @@ export default function Sposa() {
         />
       </section>
 
-      {/* SERVIZIO */}
-      <ServiceItem
-        title="Cosa include il servizio sposa"
-        text="Prova trucco personalizzata, Studio della pelle e dello stile, Trucco sposa il giorno dell’evento, Prodotti professionali a lunga durata, Ritocchi finali prima della cerimonia"
-        imageSrc={sposa}
-        variant="brown"
-      />
-
-      <ServiceItem
-        title="Il mio metodo"
-        imageSrc={eli_01}
-        variant="white"
-        reverse
-      >
-        <div>
-          <h3>01 — Primo contatto</h3>
-          <p>Parliamo del tuo stile, della data e dei tuoi desideri.</p>
-        </div>
-
-        <div>
-          <h3>02 — Prova trucco</h3>
-          <p>Definiamo insieme il look perfetto per te.</p>
-        </div>
-
-        <div>
-          <h3>03 — Il grande giorno</h3>
-          <p>Trucco curato, tempi rispettati, zero stress.</p>
-        </div>
-      </ServiceItem>
-
-      <Feedback
-        title="teste"
-        text="Le spose che ho truccato mi hanno raccontato le loro storie, i loro momenti e le emozioni del giorno. Ogni trucco è un omaggio alla loro bellezza e personalità."
-      />
-
-      {/* GALLERIA */}
-      <section className={styles.gallerySection}>
-        <Title text="Le mie spose" variant="Brown" />
-
-        <div className={styles.gallery}>
-          <Image
-            src={spose_1}
-            alt=""
-            width={400}
-            height={550}
-            className="galleryImage"
-          />
-          <Image
-            src={spose_2}
-            alt=""
-            width={500}
-            height={350}
-            className="galleryImage"
-          />
-          <Image
-            src={spose_3}
-            alt=""
-            width={400}
-            height={550}
-            className="galleryImage"
-          />
-          <Image
-            src={spose_4}
-            alt=""
-            width={500}
-            height={350}
-            className="galleryImage"
-          />
-          <Image
-            src={spose_5}
-            alt=""
-            width={400}
-            height={550}
-            className="galleryImage"
-          />
-        </div>
-      </section>
-
-      {/* CTA FINAL */}
       <section className={styles.cta}>
         <Title text="Parliamo del tuo giorno speciale" variant="Brown" />
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
@@ -249,7 +183,7 @@ export default function Sposa() {
 
           <FormField
             label="Orario del Matrimonio"
-            name="Orario"
+            name="time"
             type="time"
             placeholder="--:--"
             value={form.time}
@@ -295,7 +229,38 @@ export default function Sposa() {
             error={errors.contact}
           />
 
-          <Button text="Invia Richiesta" variant="Brown" />
+          <div className={styles.privacy}>
+            <label className={styles.privacyLabel}>
+              <input
+                type="checkbox"
+                name="privacy"
+                checked={form.privacy}
+                onChange={(e) =>
+                  setForm((prev) => ({
+                    ...prev,
+                    privacy: e.target.checked,
+                  }))
+                }
+              />
+
+              <span>
+                Ho letto e accetto la{" "}
+                <a
+                  href="/privacy-policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Privacy Policy
+                </a>
+              </span>
+            </label>
+
+            {errors.privacy && (
+              <span className={styles.error}>{errors.privacy}</span>
+            )}
+          </div>
+
+          <button type="submit"> testando </button>
         </form>
       </section>
 
@@ -305,6 +270,86 @@ export default function Sposa() {
         title="Richiesta inviata ✨"
         message="Grazie per averci contattato. Ti risponderemo al più presto."
       />
+
+      {/* SERVIZIO */}
+      <ServiceItem
+        title="Cosa include il servizio sposa"
+        text="Prova trucco personalizzata, Studio della pelle e dello stile, Trucco sposa il giorno dell’evento, Prodotti professionali a lunga durata, Ritocchi finali prima della cerimonia"
+        imageSrc={sposa}
+        variant="brown"
+      />
+
+      <ServiceItem
+        title="Il mio metodo"
+        imageSrc={eli_01}
+        variant="white"
+        reverse
+      >
+        <div>
+          <h3>01 — Primo contatto</h3>
+          <p>Parliamo del tuo stile, della data e dei tuoi desideri.</p>
+        </div>
+
+        <div>
+          <h3>02 — Prova trucco</h3>
+          <p>Definiamo insieme il look perfetto per te.</p>
+        </div>
+
+        <div>
+          <h3>03 — Il grande giorno</h3>
+          <p>Trucco curato, tempi rispettati, zero stress.</p>
+        </div>
+      </ServiceItem>
+
+      <Feedback
+        title="“Ho potuto vedere e vivere la mia versione migliore”"
+        text="Ho trovato me stesso. Per molto tempo ho cercato di conoscere me stesso nella mia versione personale, e lì, con le tue cure, ho potuto vedere e vivere la mia versione migliore."
+      />
+
+      {/* GALLERIA */}
+      <section className={styles.gallerySection}>
+        <Title text="Le mie spose" variant="Brown" />
+
+        <div className={styles.gallery}>
+          <Image
+            src={spose_1}
+            alt="Trucco sposa naturale ed elegante"
+            width={400}
+            height={550}
+            className="galleryImage"
+          />
+          <Image
+            src={spose_2}
+            alt="Trucco sposa elegante e glamour"
+            width={500}
+            height={350}
+            className="galleryImage"
+          />
+          <Image
+            src={spose_3}
+            alt="Trucco sposa luminoso e raffinato"
+            width={400}
+            height={550}
+            className="galleryImage"
+          />
+          <Image
+            src={spose_4}
+            alt="Trucco sposa glamour e sofisticato"
+            width={500}
+            height={350}
+            className="galleryImage"
+          />
+          <Image
+            src={spose_5}
+            alt=" Trucco sposa classico e senza tempo"
+            width={400}
+            height={550}
+            className="galleryImage"
+          />
+        </div>
+      </section>
+
+      {/* CTA FINAL */}
     </main>
   );
 }

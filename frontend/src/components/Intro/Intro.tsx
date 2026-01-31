@@ -3,7 +3,13 @@
 import { useState } from "react";
 import styles from "./Intro.module.css";
 
-export default function Intro() {
+interface IntroProps {
+  subtitle?: string;
+  title?: string;
+  description?: string;
+}
+
+export default function Intro({ subtitle, title, description }: IntroProps) {
   const [isPaused, setIsPaused] = useState(false);
 
   return (
@@ -33,23 +39,12 @@ export default function Intro() {
       {/* Conteúdo */}
       <div className={styles.intro__content}>
         <h1 id="intro-title" className={styles.intro__title}>
-          TRUCCO PER SPOSE, EVENTI E MOMENTI SPECIALI
+          {subtitle}
         </h1>
 
-        <p className={styles.intro__atencion}>Bellezza nella diversità</p>
+        <p className={styles.intro__atencion}>{title}</p>
 
-        <p className={styles.intro__paragraph}>
-          La mia più grande gioia è vederti riconoscere e amare ancora di più te
-          stessa guardandoti allo specchio. Attraverso il trucco, esalto la tua
-          essenza con delicatezza, cura e intenzione.
-          <br />
-          <br />
-          Specializzata make-up per spose, eventi come lauree, diciottesimi e
-          servizi fotografici, mi immergo con pennelli e colori nel tuo giorno
-          speciale per raccontare ciò che vivi. Attraverso il trucco, voglio
-          farti sentire davvero te stessa, esaltando la tua delicatezza, forza e
-          bellezza. Ti va di conoscerci?
-        </p>
+        <p className={styles.intro__paragraph}>{description}</p>
       </div>
     </section>
   );

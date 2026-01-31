@@ -18,7 +18,7 @@ export default function ServiceItem({
   title,
   text,
   variant = "brown",
-  buttonText = "Richiedi Preventivo",
+  buttonText = "",
   imageSrc,
   reverse = false,
   children,
@@ -47,12 +47,18 @@ export default function ServiceItem({
             variant={variant === "brown" ? "White" : "Brown"}
           />
 
-          {children ? children : <Paragraph text={text} variant="Brown" />}
-
-          <Button
-            text={buttonText}
-            variant={variant === "brown" ? "White" : "Brown"}
-          />
+          {children
+            ? children
+            : text && <Paragraph text={text} variant="Brown" />}
+          {buttonText && (
+            <div className={styles.serviceButton}>
+              <Button
+                href="/contatti"
+                text={buttonText}
+                variant={variant === "brown" ? "White" : "Brown"}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

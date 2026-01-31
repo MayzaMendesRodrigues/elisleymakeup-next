@@ -1,18 +1,31 @@
 .makeup {
   background-color: #a37d5a;
   display: flex;
+  width: 100%;
   justify-content: space-around;
 }
 
 .makeup__img {
   width: auto;
-  max-width: 700px;
+  max-width: 50vw;
 }
 
 .makeup__self {
   padding: 100px;
   text-align: center;
   justify-content: center;
+}
+
+.hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 0, 0, 0.2),
+    transparent
+  );
+  margin: 2.5rem 0;
 }
 
 @media (max-width: 1304px) {
