@@ -15,6 +15,9 @@ type GalleryItem = {
       small?: {
         url: string;
       };
+      large?: {
+        url: string;
+      };
     };
   } | null;
 };
@@ -24,6 +27,7 @@ type GalleryResponse = {
 };
 
 type GalleryData = {
+  id: number;
   title: string;
   imageUrl: string;
   order: number;
@@ -32,15 +36,17 @@ type GalleryData = {
 export default function GalleryComponent() {
   const [galleryData, setGalleryData] = useState<GalleryData[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<GalleryData | null>(null);
 
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const STRAPI_BASE_URL = "http://localhost:1337";
 
+  /* FETCH */
   useEffect(() => {
     async function fetchGallery() {
       try {
         const response = (await getStrapiData(
-          "/api/galleries?populate=image"
+          "/api/galleries?populate=image",
         )) as GalleryResponse;
 
         if (!response?.data?.length) {
@@ -72,37 +78,85 @@ export default function GalleryComponent() {
     fetchGallery();
   }, []);
 
+  /* ESC FECHA MODAL */
   useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
+    function handleEsc(e: KeyboardEvent) {
       if (e.key === "Escape") {
-        closeButtonRef.current?.blur();
+        setSelectedImage(null);
       }
-    };
+    }
 
     window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
+  /* FOCUS NO BOTÃO CLOSE */
+  useEffect(() => {
+    if (selectedImage) {
+      closeButtonRef.current?.focus();
+    }
+  }, [selectedImage]);
+
   return (
-    <main className={styles.gallery}>
-      {error && <p className={styles.error}>{error}</p>}
+    <>
+      <main className={styles.gallery}>
+        {error && <p className={styles.error}>{error}</p>}
 
-      {!error && !galleryData && <p>Loading gallery data...</p>}
+        {galleryData.map((item) => (
+          <div
+            key={item.id}
+            className={styles.card}
+            role="button"
+            tabIndex={0}
+            aria-label={`Ver imagem ${item.title}`}
+            onClick={() => setSelectedImage(item)}
+            onKeyDown={(e) => e.key === "Enter" && setSelectedImage(item)}
+          >
+            <Image
+              src={`${STRAPI_BASE_URL}${item.imageUrl}`}
+              alt={item.title}
+              fill
+              className={styles.image}
+              sizes="(max-width: 768px) 100vw, 33vw"
+              unoptimized
+            />
 
-      {galleryData.map((item) => (
-        <div key={item.order} className={styles.card}>
-          <Image
-            src={`${STRAPI_BASE_URL}${item.imageUrl}`}
-            alt={item.title}
-            className={styles.image}
-            width={250}
-            height={250}
-            unoptimized
-          />
+            <span className={styles.text}>{item.title}</span>
+          </div>
+        ))}
+      </main>
 
-          <span className={styles.text}>{item.title}</span>
+      {/* MODAL */}
+      {selectedImage && (
+        <div
+          className={styles.overlay}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Imagem ampliada"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+            <button
+              ref={closeButtonRef}
+              className={styles.close}
+              aria-label="Fechar imagem"
+              onClick={() => setSelectedImage(null)}
+            >
+              ✕
+            </button>
+
+            <Image
+              src={`${STRAPI_BASE_URL}${selectedImage.imageUrl}`}
+              alt={selectedImage.title}
+              className={styles.modalImage}
+              width={1600}
+              height={2000}
+              priority
+              unoptimized
+            />
+          </div>
         </div>
-      ))}
-    </main>
+      )}
+    </>
   );
 }

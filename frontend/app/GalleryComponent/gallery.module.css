@@ -1,17 +1,25 @@
 /* grid base (exemplo) */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2px;
 }
 
 .card {
   position: relative;
-  grid-column: span 2;
+  grid-column: span 3;
   aspect-ratio: 3 / 4;
   overflow: hidden;
   cursor: pointer;
-  border-radius: 20px;
+  transition: transform 0.3s ease;
+}
+
+.card:nth-child(3n) {
+  grid-column: span 4;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .image {
@@ -25,6 +33,7 @@
   color: white;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 /* modal */
@@ -42,33 +51,79 @@
   position: relative;
   max-width: 90vw;
   max-height: 90vh;
-  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modalImage {
-  width: auto;
-  height: auto;
-  max-width: 85vw;
+  max-width: 90vw;
   max-height: 85vh;
   object-fit: contain;
+  margin-bottom: -100px;
 }
 
 .close {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: -22px;
+  right: -22px;
   background: rgba(0, 0, 0, 0.6);
   border: none;
   color: white;
   font-size: 1.2rem;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 5;
+  z-index: 10;
 }
 
-/* .close:focus-visible {
+.close:focus-visible {
   outline: 2px solid white;
-  outline-offset: 2px;
-} */
+}
+
+@media (max-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+  }
+
+  .card {
+    grid-column: span 4;
+  }
+
+  .card:nth-child(3n) {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .card {
+    grid-column: span 2;
+    aspect-ratio: 3 / 4;
+  }
+
+  .card:nth-child(3n) {
+    grid-column: span 2;
+  }
+
+  .text {
+    font-size: 0.8rem;
+  }
+
+  .modalImage {
+    max-width: 92vw;
+    max-height: 80vh;
+    margin-bottom: 0;
+  }
+
+  .close {
+    top: 12px;
+    right: 12px;
+  }
+}

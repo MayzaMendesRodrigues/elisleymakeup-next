@@ -1,5 +1,5 @@
 import photo_1 from "../../../public/images/photoCarrosel_1.jpg";
-import photo_2 from "../../../public/images/photoCarrosel_2.jpg";
+import photo_2 from "../../../public/images/photoCarrosel_2.png";
 import photo_3 from "../../../public/images/photoCarrosel_3.jpg";
 import photo_4 from "../../../public/images/photograph.jpg";
 import logo from "../../../public/images/logo.png";
@@ -37,7 +37,7 @@ export default function PhotographBride() {
               alt={`Foto ${index + 1}`}
               className={styles.photo}
             />
-          ) : null
+          ) : null,
         )}
       </div>
 
@@ -50,7 +50,7 @@ export default function PhotographBride() {
               alt="Logo"
               className={styles.logo}
             />
-          ) : null
+          ) : null,
         )}
       </div>
     </section>
