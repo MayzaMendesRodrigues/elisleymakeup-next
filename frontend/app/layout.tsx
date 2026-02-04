@@ -37,6 +37,12 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=optional"
         />
+
+        <script
+          data-goatcounter="https://elisley-makeup.goatcounter.com/count"
+          async
+          src="//gc.zgo.at/count.js"
+        ></script>
       </head>
       <body
         className={`${montserrat.variable} ${italiana.variable} antialiased`}
