@@ -24,22 +24,23 @@ export async function POST(req: Request) {
       privacy,
     } = body;
 
-    // if (!privacy) {
-    //   return new NextResponse("Privacy not accepted", { status: 400 });
-    // }
+    if (!privacy) {
+      return new NextResponse("Privacy not accepted", { status: 400 });
+    }
 
     if (!process.env.RESEND_API_KEY) {
       return new NextResponse("Resend API key not configured", { status: 500 });
     }
 
     await resend.emails.send({
-      from: "<bounced@resend.dev>",
+      from: "Sposa <onboarding@resend.dev>",
       to: ["mayzamrodrigues@gmail.com"],
       subject: "Nuova richiesta di contatto",
       html: `
         <h2>Nuovo contatto</h2>
         <p><strong>Nome:</strong> ${name}</p>
-        <p><strong>Contatto preferito:</strong> ${phone}</p>
+        <p><strong>Contatto preferito:</strong> ${contact}</p>
+        <p><strong>Telefono:</strong> ${phone || "Non fornito"}</p>
         <p><strong>Data dell'evento:</strong> ${date}</p>
         <p><strong>Preferência de Contato:</strong> ${contact}</p> <hr />
         <p><strong>Orario del matrimonio:</strong> ${time}</p>

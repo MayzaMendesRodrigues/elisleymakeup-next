@@ -41,7 +41,6 @@ export default function GalleryComponent() {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const STRAPI_BASE_URL = "http://localhost:1337";
 
-  /* FETCH */
   useEffect(() => {
     async function fetchGallery() {
       try {
@@ -78,7 +77,6 @@ export default function GalleryComponent() {
     fetchGallery();
   }, []);
 
-  /* ESC FECHA MODAL */
   useEffect(() => {
     function handleEsc(e: KeyboardEvent) {
       if (e.key === "Escape") {
@@ -90,7 +88,6 @@ export default function GalleryComponent() {
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
-  /* FOCUS NO BOTÃO CLOSE */
   useEffect(() => {
     if (selectedImage) {
       closeButtonRef.current?.focus();

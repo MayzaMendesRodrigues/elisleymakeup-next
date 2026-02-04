@@ -6,6 +6,9 @@ import ButtonFloating from "@/src/components/ui/ButtonFloating/ButtonFloating";
 import Nav from "@/src/components/Nav/Nav";
 import HeaderWrapper from "@/src/components/Header/headerWrapper";
 import Footer from "@/src/components/Footer/Footer";
+import elisley from "@/public/images/elisley_01.png";
+
+import Script from "next/script";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -20,9 +23,33 @@ const italiana = Italiana({
 });
 
 export const metadata: Metadata = {
-  title: "Elisley Make-up - Trucco Sposa e Eventi Speciali ad Abruzzo",
+  title: "Elisley Vieira | Make-up Artist in Abruzzo e in tutta Italia",
   description:
-    "Make-up professionale per spose ad Abruzzo. Un esperienza su misura per valorizzare la tua bellezza naturale nel giorno più importante della tua vita.",
+    "Trucco sposa professionale e make-up per eventi speciali. Base in Abruzzo (Pescara, Chieti, Teramo, L'Aquila) con servizio disponibile in tutta Italia. Valorizza la tua bellezza naturale.",
+  keywords: [
+    "make-up artist Abruzzo",
+    "trucco sposa Italia",
+    "truccatrice professionale",
+    "bridal makeup Italy",
+    "Elisley Vieira",
+  ],
+
+  openGraph: {
+    title: "Elisley Vieira | Make-up Artist Professionale",
+    description:
+      "Servizio di trucco professionale in Abruzzo e in tutta Italia.",
+    url: "https://www.elisleymakeup.it",
+    siteName: "Elisley Make-up",
+    images: [
+      {
+        url: elisley.src,
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "it_IT",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -38,11 +65,11 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=optional"
         />
 
-        <script
-          data-goatcounter="https://elisley-makeup.goatcounter.com/count"
-          async
+        <Script
+          data-goatcounter="https://elisley-makeup.goatcounter.com"
           src="//gc.zgo.at/count.js"
-        ></script>
+          strategy="afterInteractive"
+        ></Script>
       </head>
       <body
         className={`${montserrat.variable} ${italiana.variable} antialiased`}

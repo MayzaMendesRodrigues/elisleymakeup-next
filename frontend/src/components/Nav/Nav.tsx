@@ -26,6 +26,16 @@ export default function Nav() {
 
   const closeMenu = () => setMenuOpen(false);
 
+  const trackClick = (label: string) => {
+    if (typeof window !== "undefined" && window.goatcounter) {
+      window.goatcounter.count({
+        path: `nav-click-${label}`,
+        title: `Nav click: ${label}`,
+        event: true,
+      });
+    }
+  };
+
   return (
     <nav ref={navRef} className={styles.nav}>
       <button
@@ -45,31 +55,61 @@ export default function Nav() {
       <div className={`${styles.navMenu} ${menuOpen ? styles.active : ""}`}>
         <ul className={styles.navItemsMobile}>
           <li>
-            <Link href="/" onClick={closeMenu}>
+            <Link
+              href="/"
+              onClick={() => {
+                trackClick("Home-mobile");
+                closeMenu();
+              }}
+            >
               Elisley Vieira
             </Link>
           </li>
 
           <li>
-            <Link href="/servizi" onClick={closeMenu}>
+            <Link
+              href="/servizi"
+              onClick={() => {
+                trackClick("Servizi-mobile");
+                closeMenu();
+              }}
+            >
               Servizi
             </Link>
           </li>
 
           <li>
-            <Link href="/sposa" onClick={closeMenu}>
+            <Link
+              href="/sposa"
+              onClick={() => {
+                trackClick("Sposa-mobile");
+                closeMenu();
+              }}
+            >
               Make-up Sposa
             </Link>
           </li>
 
           <li>
-            <Link href="/gallery" onClick={closeMenu}>
+            <Link
+              href="/gallery"
+              onClick={() => {
+                trackClick("Galleria-mobile");
+                closeMenu();
+              }}
+            >
               Galleria
             </Link>
           </li>
 
           <li>
-            <Link href="/contatti" onClick={closeMenu}>
+            <Link
+              href="/contatti"
+              onClick={() => {
+                trackClick("Contatti-mobile");
+                closeMenu();
+              }}
+            >
               Contatti
             </Link>
           </li>
@@ -79,20 +119,32 @@ export default function Nav() {
       {/* Desktop menu */}
       <ul className={styles.navItems}>
         <li>
-          <Link href="/">Elisley Vieira</Link>
+          <Link href="/" onClick={() => trackClick("Home-desktop")}>
+            Elisley Vieira
+          </Link>
         </li>
         <li>
-          <Link href="/servizi">Servizi</Link>
+          <Link href="/servizi" onClick={() => trackClick("Servizi-desktop")}>
+            Servizi
+          </Link>
         </li>
         <li>
-          <Link href="/sposa">Make-up Sposa</Link>
+          <Link href="/sposa" onClick={() => trackClick("Sposa-desktop")}>
+            Make-up Sposa
+          </Link>
         </li>
         <li>
-          <Link href="/gallery">Galleria</Link>
+          <Link href="/gallery" onClick={() => trackClick("Galleria-desktop")}>
+            Galleria
+          </Link>
         </li>
       </ul>
 
-      <Link href="/contatti" className={styles.navContact}>
+      <Link
+        href="/contatti"
+        className={styles.navContact}
+        onClick={() => trackClick("Contatti-desktop")}
+      >
         Contatti
       </Link>
     </nav>

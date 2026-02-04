@@ -12,6 +12,7 @@ import {
   isValidPhone,
   // isFutureDate,
 } from "@/src/utils/validators";
+import { s } from "framer-motion/client";
 
 type FormState = {
   name: string;
@@ -37,6 +38,7 @@ export default function ContactForm() {
     Partial<FormState & { contactInfo: string }>
   >({});
   const [successOpen, setSuccessOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -81,12 +83,14 @@ export default function ContactForm() {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length > 0) return;
-
-    const res = await fetch("/api/contact", {
+    setLoading(true);
+    const res = await fetch("/api/contatti", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     });
+
+    setLoading(false);
 
     if (res.ok) {
       setSuccessOpen(true);
@@ -99,7 +103,6 @@ export default function ContactForm() {
       <section className={styles.wrapper}>
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
           <Title text="Contattami" variant="Brown" />
-
           <FormField
             label="Nome e Cognome"
             name="name"
@@ -107,7 +110,6 @@ export default function ContactForm() {
             onChange={handleChange}
             error={errors.name}
           />
-
           <FormField
             label="Numero di Telefono"
             name="phone"
@@ -115,7 +117,6 @@ export default function ContactForm() {
             onChange={handleChange}
             error={errors.contactInfo}
           />
-
           <FormField
             label="Email"
             name="email"
@@ -133,7 +134,6 @@ export default function ContactForm() {
             onChange={handleChange}
             error={errors.date}
           /> */}
-
           <FormField
             label="Messaggio"
             name="message"
@@ -141,7 +141,6 @@ export default function ContactForm() {
             onChange={handleChange}
             textarea
           />
-
           <RadioGroup
             title="Come preferisci essere contattato?"
             name="contact"
@@ -150,8 +149,9 @@ export default function ContactForm() {
             onChange={handleChange}
             error={errors.contact}
           />
-
-          <Button text="Invia Richiesta" variant="Brown" href="#" />
+          <button type="submit" disabled={loading}>
+            {loading ? "Invio in corso..." : "Invia richiesta"}
+          </button>{" "}
         </form>
       </section>
 

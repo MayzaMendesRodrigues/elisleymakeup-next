@@ -1,15 +1,21 @@
 "use client";
+import Intro from "@/src/components/Intro/Intro";
+
 import dynamic from "next/dynamic";
 
 const GalleryComponent = dynamic(
   () => import("../GalleryComponent/GalleryComponent"),
-  { ssr: false }
+  { ssr: false },
 );
 
 export default function Gallery() {
   return (
     <main>
-      <h1>Galeria</h1>
+      <Intro
+        subtitle="Galleria"
+        title="Dettagli che raccontano storie"
+        description="Esplora una raccolta di immagini che riflettono il nostro sguardo attento, la tecnica e la sensibilità in ogni progetto."
+      />
       <GalleryComponent />
     </main>
   );

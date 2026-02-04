@@ -55,13 +55,19 @@ const initialState: FormState = {
   privacy: false,
 };
 
+type FormErrors = Partial<
+  Omit<FormState, "privacy"> & {
+    privacy: string;
+    contactInfo: string;
+  }
+>;
+
 export default function Sposa() {
   const [form, setForm] = useState<FormState>(initialState);
-  const [errors, setErrors] = useState<
-    Partial<FormState & { contactInfo: string }>
-  >({});
+  const [errors, setErrors] = useState<FormErrors>({});
 
   const [successOpen, setSuccessOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -86,7 +92,13 @@ export default function Sposa() {
     if (!form.phone && !form.email) {
       newErrors.contactInfo = "Inserisci almeno email o telefono";
     }
+    if (form.phone && !isValidPhone(form.phone)) {
+      newErrors.phone = "Numero di telefono non valido";
+    }
 
+    if (form.email && !isValidEmail(form.email)) {
+      newErrors.email = "Email non valida";
+    }
     if (form.time && !isValidTime(form.time)) {
       newErrors.time = "Orario non valido";
     }
@@ -101,19 +113,20 @@ export default function Sposa() {
       newErrors.contact = "Seleziona una preferenza di contatto";
     }
 
-    // if (!form.privacy) {
-    //   newErrors.privacy = "È necessario accettare la privacy policy";
-    // }
+    if (!form.privacy) {
+      newErrors.privacy = "È necessario accettare la privacy policy";
+    }
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length > 0) return;
-
-    const res = await fetch("/api/contact", {
+    setLoading(true);
+    const res = await fetch("/api/sposa", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     });
+    setLoading(false);
 
     console.log("Response:", res);
     console.log("FORM:", form);
@@ -160,7 +173,7 @@ export default function Sposa() {
             name="phone"
             value={form.phone}
             onChange={handleChange}
-            error={errors.contactInfo}
+            error={errors.contactInfo || errors.phone}
           />
 
           <FormField
@@ -169,7 +182,7 @@ export default function Sposa() {
             type="email"
             value={form.email}
             onChange={handleChange}
-            error={errors.contactInfo}
+            error={errors.contactInfo || errors.email}
           />
           <FormField
             label="Data dell’Evento"
@@ -260,7 +273,9 @@ export default function Sposa() {
             )}
           </div>
 
-          <button type="submit"> testando </button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Invio in corso..." : "Invia richiesta"}
+          </button>
         </form>
       </section>
 
