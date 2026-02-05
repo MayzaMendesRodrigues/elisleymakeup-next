@@ -6,13 +6,11 @@ import Modal from "../../src/components/ui/Modal/modal";
 import Title from "@/src/components/ui/Title/Title";
 import FormField from "@/src/components/Form/FormField/FormField";
 import RadioGroup from "@/src/components/Form/RadioGroup/RadioGroup";
-import Button from "@/src/components/ui/Button/Button";
 import {
   isValidEmail,
   isValidPhone,
   // isFutureDate,
 } from "@/src/utils/validators";
-import { s } from "framer-motion/client";
 
 type FormState = {
   name: string;
