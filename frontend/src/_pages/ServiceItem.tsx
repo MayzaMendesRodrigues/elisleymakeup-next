@@ -4,7 +4,7 @@ import Title from "../components/ui/Title/Title";
 import Paragraph from "../components/ui/Paragraph/Paragraph";
 import Image, { StaticImageData } from "next/image";
 
-interface ServiceItemProps {
+export interface ServiceItemProps {
   title: string;
   text?: string;
   variant?: "brown" | "white";

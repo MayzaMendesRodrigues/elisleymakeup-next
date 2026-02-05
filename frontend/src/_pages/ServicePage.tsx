@@ -1,6 +1,6 @@
-import ServiceItem from "./ServiceItem";
+import ServiceItem, { ServiceItemProps } from "./ServiceItem";
 export default function Service() {
-  const services = [
+  const services: ServiceItemProps[] = [
     {
       title: "Sposa",
       text: `Indipendentemente da come immagini il tuo grande giorno, che sia
