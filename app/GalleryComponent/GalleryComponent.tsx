@@ -4,7 +4,22 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./gallery.module.css";
 import { getStrapiData } from "../lib/strapi";
+import ludovica from "../../public/images/gallery01.png";
+import gergana from "../../public/images/galerry02.png";
+import georgia from "../../public/images/photoCarrosel_1.jpg";
+import mayza from "../../public/images/photoCarrosel_2.png";
 
+const localGalleryData: GalleryData[] = [
+  {
+    id: 1,
+    title: "Maria Ludovica  Cappello",
+    order: 1,
+    imageUrl: ludovica.src,
+  },
+  { id: 2, title: "Gergana Lazarova", order: 2, imageUrl: gergana.src },
+  { id: 3, title: "Sposa Clasica", order: 3, imageUrl: georgia.src },
+  { id: 4, title: "Sposa Moderna", order: 4, imageUrl: mayza.src },
+];
 type GalleryItem = {
   id: number;
   title: string;
@@ -48,7 +63,7 @@ export default function GalleryComponent() {
         )) as GalleryResponse;
 
         if (!response?.data?.length) {
-          setError("Nenhum item encontrado");
+          setGalleryData(localGalleryData);
           return;
         }
 
@@ -69,6 +84,7 @@ export default function GalleryComponent() {
         setGalleryData(normalizedData);
       } catch (err) {
         console.error("Erro ao buscar galeria:", err);
+        setGalleryData(localGalleryData);
         setError("Erro ao carregar a galeria");
       }
     }
