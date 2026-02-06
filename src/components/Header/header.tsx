@@ -13,9 +13,9 @@ export default function Header({ backgroundImage }: HeaderProps) {
         src={`/images/${backgroundImage}`}
         alt="Elisley Make-up background"
         fill
-        priority
+        priority={false}
         className={styles.backgroundImage}
-        sizes="100vw"
+        sizes="(max-width: 768px) 100vw, 100vw"
       />
 
       <div className={styles.overlay} />
