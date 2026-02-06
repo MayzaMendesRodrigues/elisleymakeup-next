@@ -169,7 +169,12 @@ export default function GalleryComponent() {
             </button>
 
             <Image
-              src={`${process.env.NEXT_PUBLIC_API_URL}${selectedImage.imageUrl}`}
+              src={
+                selectedImage.imageUrl.startsWith("http") ||
+                selectedImage.imageUrl.startsWith("/")
+                  ? selectedImage.imageUrl
+                  : `${process.env.NEXT_PUBLIC_API_URL}${selectedImage.imageUrl}`
+              }
               alt={selectedImage.title}
               className={styles.modalImage}
               width={1600}
