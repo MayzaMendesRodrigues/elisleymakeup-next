@@ -39,7 +39,6 @@ export default function GalleryComponent() {
   const [selectedImage, setSelectedImage] = useState<GalleryData | null>(null);
 
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const STRAPI_BASE_URL = "http://localhost:1337";
 
   useEffect(() => {
     async function fetchGallery() {
@@ -110,7 +109,7 @@ export default function GalleryComponent() {
             onKeyDown={(e) => e.key === "Enter" && setSelectedImage(item)}
           >
             <Image
-              src={`${STRAPI_BASE_URL}${item.imageUrl}`}
+              src={`${process.env.NEXT_PUBLIC_API_URL}${item.imageUrl}`}
               alt={item.title}
               fill
               className={styles.image}
@@ -143,7 +142,7 @@ export default function GalleryComponent() {
             </button>
 
             <Image
-              src={`${STRAPI_BASE_URL}${selectedImage.imageUrl}`}
+              src={`${process.env.NEXT_PUBLIC_API_URL}${selectedImage.imageUrl}`}
               alt={selectedImage.title}
               className={styles.modalImage}
               width={1600}
