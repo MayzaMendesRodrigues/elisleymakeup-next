@@ -123,13 +123,45 @@
     background-color: #4f3624;
     transition: width 0.5s;
     width: 100%;
-    height: calc(100vh - 70px);
+    min-height: 100svh;
     animation: fadeSlideIn 0.5s forwards;
     display: block;
   }
 
   .navMenu {
     display: none;
+  }
+
+  .footer__socialIcon {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 50px;
+  }
+
+  .faBrands {
+    color: #fff;
+    background-color: #a37d5a;
+    width: 30px;
+    height: 30px;
+    margin: 15px;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease;
+    cursor: pointer;
+  }
+
+  .faBrands:hover,
+  .faBrands:focus-visible {
+    transform: scale(1.05);
+    background-color: #fff;
+    color: #a37d5a;
+    outline: none;
   }
 
   .navItems,

@@ -5,6 +5,13 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Nav.module.css";
 import Image from "next/image";
 import logo from "@/public/images/logo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebookF,
+  faInstagram,
+  faTiktok,
+} from "@fortawesome/free-brands-svg-icons";
+
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
@@ -114,6 +121,33 @@ export default function Nav() {
             </Link>
           </li>
         </ul>
+
+        <div className={styles.footer__socialIcon}>
+          <a
+            href="https://www.instagram.com/elisley_vieiramakeup/"
+            target="_blank"
+          >
+            <FontAwesomeIcon
+              icon={faInstagram}
+              size="1x"
+              className={styles.faBrands}
+            />
+          </a>
+          <a href="https://www.facebook.com/elisley.santos.7/" target="_blank">
+            <FontAwesomeIcon
+              icon={faFacebookF}
+              size="1x"
+              className={styles.faBrands}
+            />
+          </a>
+          <a href="https://www.tiktok.com/@elisleyvieiramakeup" target="_blank">
+            <FontAwesomeIcon
+              icon={faTiktok}
+              size="1x"
+              className={styles.faBrands}
+            />
+          </a>
+        </div>
       </div>
 
       {/* Desktop menu */}
