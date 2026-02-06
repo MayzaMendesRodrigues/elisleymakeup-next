@@ -67,21 +67,27 @@ export default function GalleryComponent() {
           return;
         }
 
-        const normalizedData: GalleryData[] = response.data
-          .filter((item) => item.image)
-          .map((item) => {
-            const imageUrl =
-              item.image?.formats?.small?.url ?? item.image?.url ?? "";
+        const normalizedData: GalleryData[] = response?.data?.length
+          ? response.data
+              .filter((item) => item.image)
+              .map((item) => {
+                const imageUrl =
+                  item.image?.formats?.small?.url ?? item.image?.url ?? "";
 
-            return {
-              id: item.id,
-              title: item.title,
-              order: item.order,
-              imageUrl,
-            };
-          });
+                return {
+                  id: item.id,
+                  title: item.title,
+                  order: item.order,
+                  imageUrl,
+                };
+              })
+          : [];
 
-        setGalleryData(normalizedData);
+        setGalleryData(
+          [...localGalleryData, ...normalizedData].sort(
+            (a, b) => a.order - b.order,
+          ),
+        );
       } catch (err) {
         console.error("Erro ao buscar galeria:", err);
         setGalleryData(localGalleryData);
@@ -125,7 +131,12 @@ export default function GalleryComponent() {
             onKeyDown={(e) => e.key === "Enter" && setSelectedImage(item)}
           >
             <Image
-              src={`${process.env.NEXT_PUBLIC_API_URL}${item.imageUrl}`}
+              src={
+                item.imageUrl.startsWith("http") ||
+                item.imageUrl.startsWith("/")
+                  ? item.imageUrl
+                  : `${process.env.NEXT_PUBLIC_API_URL}${item.imageUrl}`
+              }
               alt={item.title}
               fill
               className={styles.image}
