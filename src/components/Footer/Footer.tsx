@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
               Contatti
             </Link>
 
-            <Link href="/policy-privacy" className={styles.footer__link}>
+            <Link href="/privacy-policy" className={styles.footer__link}>
               Policy Privacy
             </Link>
           </div>
