@@ -40,10 +40,11 @@ export default function Service() {
     <section className={styles.service} id="service">
       <div className={styles.serviceContent}>
         <h2 className={styles.serviceTitle}>I Miei Servizi</h2>
+        <div className={styles.serviceContainer}>
+          <Accordion items={services} />
 
-        <Accordion items={services} />
-
-        <Button text="Scopri di più" variant="Brown" href="/servizi" />
+          <Button text="Scopri di più" variant="Brown" href="/servizi" />
+        </div>
       </div>
     </section>
   );

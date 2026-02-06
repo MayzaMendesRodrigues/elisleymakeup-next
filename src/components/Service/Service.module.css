@@ -27,6 +27,12 @@
   max-width: 600px;
 }
 
+.serviceContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 .serviceTitle {
   font-family: "Italiana", serif;
   font-size: 60px;
