@@ -16,8 +16,7 @@ export default function Home() {
         description=" La mia più grande gioia è vederti riconoscere e amare ancora di più te
           stessa guardandoti allo specchio. Attraverso il trucco, esalto la tua
           essenza con delicatezza, cura e intenzione.
-          <br />
-          <br />
+        
           Specializzata make-up per spose, eventi come lauree, diciottesimi e
           servizi fotografici, mi immergo con pennelli e colori nel tuo giorno
           speciale per raccontare ciò che vivi. Attraverso il trucco, voglio
