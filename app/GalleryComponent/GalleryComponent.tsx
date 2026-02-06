@@ -91,7 +91,7 @@ export default function GalleryComponent() {
       } catch (err) {
         console.error("Erro ao buscar galeria:", err);
         setGalleryData(localGalleryData);
-        setError("Erro ao carregar a galeria");
+        setError(null);
       }
     }
 
