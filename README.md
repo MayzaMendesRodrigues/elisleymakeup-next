@@ -270,4 +270,14 @@ It demonstrates the ability to:
 * Structure scalable and maintainable code
 * Refactor and technically evolve a real‑world project
 
+## Future Improvements
+The project was built with scalability in mind, leaving room for technical and product evolution. Some planned and potential improvements include:
+
+* Implement TDD (Test‑Driven Development) to improve reliability and long‑term maintainability
+* Add unit tests for reusable UI components
+* Improve error handling and loading states
+* Enhance accessibility (ARIA, keyboard navigation)
+* Further optimize performance metrics (Lighthouse)
+
+
 
