@@ -273,7 +273,7 @@ export default function Sposa() {
             )}
           </div>
 
-          <button type="submit" disabled={loading}>
+          <button type="submit" disabled={loading} className={styles.submit}>
             {loading ? "Invio in corso..." : "Invia richiesta"}
           </button>
         </form>

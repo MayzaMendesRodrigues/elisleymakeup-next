@@ -13,6 +13,22 @@
   gap: 26px;
 }
 
+.submit {
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #fff;
+  width: 100%;
+  padding: 10px;
+  border-radius: 25px;
+  margin-top: 50px;
+  text-align: center;
+  background-color: rgba(79, 54, 36, 0.35);
+}
+
+.submit:hover {
+  background-color: #4f3624;
+}
+
 .title {
   font-family: "Italiana", serif;
   font-size: 54px;
