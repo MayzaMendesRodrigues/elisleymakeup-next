@@ -11,7 +11,9 @@
   display: flex;
   justify-content: center;
   padding: 100px 40px;
-  transition: background-color 0.6s ease, color 0.6s ease;
+  transition:
+    background-color 0.6s ease,
+    color 0.6s ease;
 }
 
 .serviceBrown {
@@ -118,9 +120,8 @@
 }
 
 @media (max-width: 768px) {
-  .service__block {
-    padding: 60px 20px;
-    background-color: red;
+  .serviceBlock {
+    padding-top: 150px;
   }
 
   .serviceContent {

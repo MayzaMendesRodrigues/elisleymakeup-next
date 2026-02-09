@@ -1,6 +1,5 @@
 .service {
   position: relative;
-  /* background-image: url("../../images/veu.png"); */
   background-size: cover;
   background-position: center;
   display: flex;
@@ -10,15 +9,6 @@
   padding: 100px;
   box-sizing: border-box;
 }
-
-/* Overlay suave (luxo/editorial) */
-/* .service::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.75);
-  z-index: 0;
-} */
 
 .serviceContent {
   position: relative;
@@ -43,20 +33,6 @@
   letter-spacing: 1px;
 }
 
-/* IMAGEM */
-/* .serviceImg {
-  position: relative;
-  z-index: 1;
-  width: 598px;
-  min-height: 468px;
-  background-image: url("../../images/home__sposa.jpg");
-  background-position: center;
-  background-size: cover;
-  border-radius: 6px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-} */
-
-/* RESPONSIVO */
 @media (max-width: 1024px) {
   .service {
     flex-direction: column;
