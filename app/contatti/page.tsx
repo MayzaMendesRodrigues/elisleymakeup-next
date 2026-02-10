@@ -147,13 +147,12 @@ export default function ContactForm() {
             onChange={handleChange}
             error={errors.contact}
           />
-          <button type="submit" disabled={loading}>
+          <button type="submit" disabled={loading} className={styles.submit}>
             {loading ? "Invio in corso..." : "Invia richiesta"}
           </button>{" "}
         </form>
       </section>
 
-      {/* POPUP PREMIUM */}
       <Modal
         isOpen={successOpen}
         onClose={() => setSuccessOpen(false)}
